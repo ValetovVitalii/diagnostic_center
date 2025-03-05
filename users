@@ -1,0 +1,20 @@
+CREATE ROLE administrator;
+CREATE ROLE manager;
+CREATE ROLE worker;
+CREATE ROLE peasant;
+
+GRANT ALL PRIVILEGES ON DATABASE "DBAD-3" TO administrator;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO administrator;
+GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO manager;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO worker;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO peasant;
+
+CREATE USER user_administrator WITH PASSWORD 'qwerty';
+CREATE USER user_manager WITH PASSWORD 'qwerty';
+CREATE USER user_worker WITH PASSWORD 'qwerty';
+CREATE USER user_peasant WITH PASSWORD 'qwerty';
+
+GRANT administrator TO user_administrator;
+GRANT manager TO user_manager;
+GRANT worker TO user_worker;
+GRANT peasant TO user_peasant;
